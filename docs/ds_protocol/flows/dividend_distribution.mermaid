@@ -1,0 +1,14 @@
+sequenceDiagram
+    actor Issuer
+    participant DSApp
+    participant DSToken
+    participant CommsService
+    participant Investor
+
+    Issuer->>DSApp: distributeDividends()
+    DSApp->>DSToken: getInvestorList()
+    DSToken-->>DSApp: investorList
+    loop for each investor
+        DSApp->>CommsService: sendNotification(investor, dividendInfo)
+    end
+    CommsService-->>Investor: notification

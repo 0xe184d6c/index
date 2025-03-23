@@ -1,0 +1,12 @@
+sequenceDiagram
+    actor User
+    participant DSToken
+    participant ComplianceService
+    participant TokenLibrary
+
+    User->>DSToken: transfer(to, value)
+    DSToken->>ComplianceService: validateTransfer(from, to, value)
+    ComplianceService-->>DSToken: allowed
+    DSToken->>TokenLibrary: performTransfer(from, to, value)
+    TokenLibrary-->>DSToken: success
+    DSToken-->>User: true

@@ -1,0 +1,12 @@
+sequenceDiagram
+    actor Issuer
+    participant DSToken
+    participant TokenLibrary
+    participant TokenDataStore
+
+    Issuer->>DSToken: issueTokens(to, value)
+    DSToken->>TokenLibrary: issueTokensCustom(...)
+    TokenLibrary->>TokenDataStore: update balances
+    TokenDataStore-->>TokenLibrary: updated
+    TokenLibrary-->>DSToken: success
+    DSToken-->>Issuer: true

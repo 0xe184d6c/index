@@ -1,0 +1,65 @@
+
+
+Compliance: Enforces rules (ComplianceService*) and configurations (ComplianceConfigurationService).
+Data Stores: Manage persistent data (e.g., TokenDataStore, ComplianceServiceDataStore).
+Omnibus: Handles aggregated wallet operations (OmnibusTBEController).
+Registry: Tracks investors (IDSRegistryService).
+Service: Integrates DS services (ServiceConsumer).
+Token: Defines token logic (DSToken, TokenLibrary).
+Trust: Manages permissions (IDSTrustService).
+Utils: Provides reusable code (BaseDSContract, CommonUtils).
+
+
+
+
+
+Compliance
+ComplianceConfigurationService.sol: Configures compliance rules (e.g., investor limits, regions) for tokens.
+ComplianceService.sol: Enforces compliance during token transfers (base implementation).
+ComplianceServiceRegulated.sol: Extends compliance for regulated securities (e.g., stricter rules).
+ComplianceServiceWhitelisted.sol: Restricts transfers to whitelisted addresses only.
+IDSComplianceConfigurationService.sol: Interface for configuring compliance settings.
+IDSComplianceService.sol: Interface for core compliance enforcement.
+IDSComplianceServicePartitioned.sol: Interface for compliance with token partitions (e.g., locked/unlocked).
+IDSLockManager.sol: Interface for managing token lock periods.
+IDSLockManagerPartitioned.sol: Interface for lock management with partitioned tokens.
+IDSPartitionsManager.sol: Interface for managing token partitions (e.g., different classes).
+IDSWalletManager.sol: Interface for managing wallet-related compliance (e.g., restrictions).
+
+
+data-stores
+ComplianceConfigurationDataStore.sol: Stores compliance configuration data.
+ComplianceServiceDataStore.sol: Stores compliance enforcement data (e.g., rules, logs).
+OmnibusTBEControllerDataStore.sol: Stores data for omnibus wallet operations (e.g., tracking balances).
+ServiceConsumerDataStore.sol: Stores service consumer mappings (e.g., DS service addresses).
+TokenDataStore.sol: Stores token balances and metadata.
+
+
+omnibus
+IDSOmnibusTBEController.sol: Interface for omnibus wallet controller (e.g., tracking balances across regions).
+IDSOmnibusWalletController.sol: Interface for managing omnibus wallet actions (e.g., deposits, withdrawals).
+OmnibusTBEController.sol: Implements omnibus wallet logic for aggregated investor tracking.
+
+registry
+IDSRegistryService.sol: Interface for investor registry (e.g., KYC, accreditation data).
+
+
+service
+IDSServiceConsumer.sol: Interface for consuming DS services (e.g., Trust, Compliance).
+ServiceConsumer.sol: Implements service consumption logic for DS Protocol integration.
+
+token
+DSToken.sol: Core token contract (ERC-20 with DS Protocol features like compliance).
+IDSToken.sol: Interface for DSToken (e.g., transfer, issue functions).
+IDSTokenPartitioned.sol: Interface for tokens with partitions (e.g., locked portions).
+StandardToken.sol: Basic ERC-20 token implementation (base for DSToken).
+TokenLibrary.sol: Reusable token logic (e.g., transfer, issuance helpers).
+TokenPartitionsLibrary.sol: Library for managing partitioned token operations.
+
+
+trust
+IDSTrustService.sol: Interface for trust management (e.g., permissions, roles).
+
+utils
+BaseDSContract.sol: Base contract with shared DS Protocol functionality (e.g., initialization).
+CommonUtils.sol: General utility functions (e.g., math, enums like IncDec).

@@ -1,0 +1,108 @@
+SECURITIZE DS PROTOCOL
+
+Public and External Functions
+initialize(string _name, string _symbol, uint8 _decimals): Initializes the token with a name, symbol, and number of decimals.
+name(): Returns the name of the token.
+symbol(): Returns the symbol of the token.
+decimals(): Returns the number of decimals the token uses.
+totalSupply(): Returns the total supply of tokens.
+balanceOf(address _owner): Returns the token balance of the specified address.
+allowance(address _owner, address _spender): Returns the remaining allowance that a spender has for an owner's tokens.
+approve(address _spender, uint256 _value): Approves a spender to spend a specified amount of tokens on behalf of the caller.
+transfer(address _to, uint256 _value): Transfers a specified amount of tokens to an address.
+transferFrom(address _from, address _to, uint256 _value): Transfers tokens from one address to another using the allowance mechanism.
+increaseApproval(address _spender, uint256 _addedValue): Increases the allowance granted to a spender by the caller.
+decreaseApproval(address _spender, uint256 _subtractedValue): Decreases the allowance granted to a spender by the caller.
+burn(address _who, uint256 _value, string _reason): Burns a specified amount of tokens from an address, with a reason provided.
+issueTokens(address _to, uint256 _value): Issues new tokens to a specified address.
+issueTokensCustom(address _to, uint256 _value, uint256 _issuanceTime, uint256 _valueLocked, string _reason, uint64 _releaseTime): Issues tokens with custom lock parameters, including issuance time, locked value, reason, and release time.
+issueTokensWithMultipleLocks(address _to, uint256 _value, uint256 _issuanceTime, uint256[] _valuesLocked, string _reason, uint64[] _releaseTimes): Issues tokens with multiple lock periods defined by values and release times.
+issueTokensWithNoCompliance(address _to, uint256 _value): Issues tokens to an address without compliance checks.
+seize(address _from, address _to, uint256 _value, string _reason): Seizes tokens from one address and transfers them to another, with a reason.
+omnibusBurn(address _omnibusWallet, address _who, uint256 _value, string _reason): Burns tokens from a specified address within an omnibus wallet, with a reason.
+omnibusSeize(address _omnibusWallet, address _from, address _to, uint256 _value, string _reason): Seizes tokens within an omnibus wallet from one address to another, with a reason.
+updateOmnibusInvestorBalance(address _omnibusWallet, address _wallet, uint256 _value, enum CommonUtils.IncDec _increase): Updates an investor's balance in an omnibus wallet, either increasing or decreasing it.
+emitOmnibusTBEEvent(address omnibusWallet, int256 totalDelta, int256 accreditedDelta, int256 usAccreditedDelta, int256 usTotalDelta, int256 jpTotalDelta): Emits an event for omnibus Total Balance Equivalent (TBE) operations with various delta values.
+emitOmnibusTBETransferEvent(address omnibusWallet, string externalId): Emits an event for omnibus TBE transfers with an external identifier.
+emitOmnibusTransferEvent(address _omnibusWallet, address _from, address _to, uint256 _value): Emits an event for transfers within an omnibus wallet.
+preTransferCheck(address _from, address _to, uint256 _value): Checks if a transfer is allowed, returning a code and reason.
+setCap(uint256 _cap): Sets the maximum cap for the token supply.
+setDSService(uint256 _serviceId, address _address): Sets the address for a specified DS service.
+setFeature(uint8 featureIndex, bool enable): Enables or disables a specific feature by index.
+setFeatures(uint256 features): Sets multiple features at once using a feature bitmap.
+supportedFeatures(): Returns the bitmap of supported features.
+getDSService(uint256 _serviceId): Returns the address of a specified DS service.
+getImplementationAddress(): Returns the address of the current implementation (for upgradeable contracts).
+getInitializedVersion(): Returns the version number of the contract initialization.
+getWalletAt(uint256 _index): Returns the wallet address at a specified index.
+isPaused(): Returns whether the contract is currently paused.
+owner(): Returns the address of the contract owner.
+pause(): Pauses the contract, halting certain operations like token transfers.
+unpause(): Unpauses the contract, resuming normal operations.
+renounceOwnership(): Allows the owner to renounce ownership of the contract.
+transferOwnership(address newOwner): Transfers ownership of the contract to a new address.
+upgradeToAndCall(address newImplementation, bytes data): Upgrades the contract to a new implementation and executes a call with provided data.
+walletCount(): Returns the total number of wallets registered.
+proxiableUUID(): Returns the UUID used for proxy upgradeability (UUPS standard).
+COMPLIANCE_CONFIGURATION_SERVICE(): Returns the service ID for compliance configuration.
+COMPLIANCE_SERVICE(): Returns the service ID for compliance services.
+DS_TOKEN(): Returns the service ID for the token itself.
+ISSUER_MULTICALL(): Returns the service ID for issuer multicall operations.
+LOCK_MANAGER(): Returns the service ID for the lock manager.
+OMNIBUS_TBE_CONTROLLER(): Returns the service ID for the omnibus TBE controller.
+PARTITIONS_MANAGER(): Returns the service ID for the partitions manager.
+REGISTRY_SERVICE(): Returns the service ID for the registry service.
+ROLE_EXCHANGE(): Returns the role ID for exchanges.
+ROLE_ISSUER(): Returns the role ID for issuers.
+ROLE_MASTER(): Returns the role ID for the master role.
+ROLE_NONE(): Returns the role ID for no role.
+ROLE_TRANSFER_AGENT(): Returns the role ID for transfer agents.
+SECURITIZE_SWAP(): Returns the service ID for securitize swap operations.
+TA_MULTICALL(): Returns the service ID for transfer agent multicall operations.
+TOKEN_ISSUER(): Returns the service ID for the token issuer.
+TOKEN_REALLOCATOR(): Returns the service ID for the token reallocator.
+TRANSACTION_RELAYER(): Returns the service ID for the transaction relayer.
+TRUST_SERVICE(): Returns the service ID for trust services.
+UNUSED_1(): Returns an unused service ID (placeholder).
+UPGRADE_INTERFACE_VERSION(): Returns the version of the upgrade interface.
+WALLET_MANAGER(): Returns the service ID for the wallet manager.
+WALLET_REGISTRAR(): Returns the service ID for the wallet registrar.
+balanceOfInvestor(string _id): Returns the balance of an investor identified by a string ID.
+cap(): Returns the current cap on the token supply.
+totalIssued(): Returns the total amount of tokens issued.
+
+
+
+Private and Internal Functions
+
+
+
+Events
+Transfer(address indexed from, address indexed to, uint256 value): Emitted when tokens are transferred between addresses.
+Approval(address indexed owner, address indexed spender, uint256 value): Emitted when an allowance is approved for a spender.
+Burn(address indexed burner, uint256 value, string reason): Emitted when tokens are burned, including the reason for burning.
+Issue(address indexed to, uint256 value, uint256 valueLocked): Emitted when new tokens are issued, including the locked value.
+OmnibusBurn(address indexed omnibusWallet, address who, uint256 value, string reason, uint8 assetTrackingMode): Emitted when tokens are burned from an omnibus wallet.
+OmnibusDeposit(address indexed omnibusWallet, address to, uint256 value, uint8 assetTrackingMode): Emitted when tokens are deposited into an omnibus wallet.
+OmnibusSeize(address indexed omnibusWallet, address from, uint256 value, string reason, uint8 assetTrackingMode): Emitted when tokens are seized within an omnibus wallet.
+OmnibusTBEOperation(address indexed omnibusWallet, int256 totalDelta, int256 accreditedDelta, int256 usAccreditedDelta, int256 usTotalDelta, int256 jpTotalDelta): Emitted for omnibus Total Balance Equivalent operations with various delta values.
+OmnibusTBETransfer(address omnibusWallet, string externalId): Emitted for omnibus TBE transfers with an external identifier.
+OmnibusTransfer(address indexed omnibusWallet, address from, address to, uint256 value, uint8 assetTrackingMode): Emitted for transfers within an omnibus wallet.
+OmnibusWithdraw(address indexed omnibusWallet, address from, uint256 value, uint8 assetTrackingMode): Emitted when tokens are withdrawn from an omnibus wallet.
+Pause(): Emitted when the contract is paused.
+Unpause(): Emitted when the contract is unpaused.
+OwnershipTransferred(address indexed previousOwner, address indexed newOwner): Emitted when contract ownership is transferred.
+Upgraded(address indexed implementation): Emitted when the contract is upgraded to a new implementation.
+WalletAdded(address wallet): Emitted when a wallet is added to the contract's registry.
+WalletRemoved(address wallet): Emitted when a wallet is removed from the contract's registry.
+DSServiceSet(uint256 serviceId, address serviceAddress): Emitted when a DS service address is set.
+Initialized(uint64 version): Emitted when the contract is initialized with a version number.
+Seize(address indexed from, address indexed to, uint256 value, string reason): Emitted when tokens are seized from one address to another.
+
+
+Roles
+ROLE_EXCHANGE: Role for entities acting as exchanges.
+ROLE_ISSUER: Role for entities authorized to issue tokens.
+ROLE_MASTER: Master role, likely granting broad administrative privileges.
+ROLE_NONE: Represents the absence of a role (default or null role).
+ROLE_TRANSFER_AGENT: Role for entities managing token transfers, such as transfer agents.

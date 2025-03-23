@@ -1,0 +1,18 @@
+sequenceDiagram
+    actor Issuer
+    participant DSApp
+    participant DSToken
+    participant CommsService
+    participant Investor
+
+    Issuer->>DSApp: proposeVote(voteDetails)
+    DSApp->>DSToken: getInvestorList()
+    DSToken-->>DSApp: investorList
+    DSApp->>CommsService: notifyVoteStart(investorList, voteDetails)
+    CommsService-->>Investor: vote notification
+    Investor->>DSApp: vote(choice)
+    DSApp->>DSToken: recordVote(investor, choice)
+    Issuer->>DSApp: closeVote()
+    DSApp->>DSToken: calculateResults()
+    DSApp->>CommsService: notifyResults(investorList, results)
+    CommsService-->>Investor: results notification

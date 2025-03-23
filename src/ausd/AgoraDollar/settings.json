@@ -1,0 +1,34 @@
+{
+	"remappings": [
+		"contracts/=agora-dollar-evm/src/contracts/",
+		"interfaces/=agora-dollar-evm/src/contracts/interfaces/",
+		"forge-std/=agora-dollar-evm/node_modules/forge-std/src/",
+		"ds-test/=agora-dollar-evm/node_modules/ds-test/src/",
+		"@openzeppelin/=agora-dollar-evm/node_modules/@openzeppelin/",
+		"solady/=agora-dollar-evm/node_modules/solady/"
+	],
+	"optimizer": {
+		"enabled": true,
+		"runs": 100000000
+	},
+	"metadata": {
+		"useLiteralContent": false,
+		"bytecodeHash": "none",
+		"appendCBOR": false
+	},
+	"outputSelection": {
+		"*": {
+			"*": [
+				"evm.bytecode",
+				"evm.deployedBytecode",
+				"devdoc",
+				"userdoc",
+				"metadata",
+				"abi"
+			]
+		}
+	},
+	"evmVersion": "shanghai",
+	"viaIR": true,
+	"libraries": {}
+}

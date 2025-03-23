@@ -1,0 +1,7 @@
+BUIDL	https://etherscan.io/address/0x9e2693f54831f6f52b0bb952c2935d26919a3626#code
+GDCP	https://etherscan.io/address/0xb2d72dedf3c799d180436a9dfbdf950250182a0d#code
+OUSG	https://etherscan.io/address/0x1ceb44b6e515abf009e0ccb6ddafd723886cf3ff#code
+USDM	https://etherscan.io/address/0x7f2f92c4dbda28d8cd7d046e005f65c0540f331e#code
+AUSD	https://etherscan.io/address/0x0000000000000d1dd95e299c2ab8df107dc83aed#code
+FOBXX	https://polygonscan.com/address/0xa814eab2e563848dbed398e14c95d69a67b315e0#code
+FOBXX	https://arbiscan.io/address/0xdcd1921bef4b45a5b5a44ab412b79bdc763eb493
